@@ -253,6 +253,7 @@ $(document).on('click', '#guardar', function(e) {
 	var cantidad = $("#cantidad").val();
 	var fecha = $("#fecha").val();
 	var comentario = $("#comentario").val();
+	var tipo = $("#tipo").val();
 
 
     $.ajax({
@@ -264,7 +265,8 @@ $(document).on('click', '#guardar', function(e) {
             idusuario: idusuario,
             cantidad: cantidad,
             fechapago: fecha,
-            comentario: comentario
+            comentario: comentario,
+			tipopago: tipo
         },
         success: function(data) {
 

@@ -11,7 +11,7 @@ function mostrar(){
 
         const dataGrid = $('#gridContainer').dxDataGrid({
         dataSource: response['usuario'],
-        keyExpr: 'idpago',
+        keyExpr: 'idusuario',
         showBorders: true,
         customizeColumns(columns) {
             columns[0].width = 70;

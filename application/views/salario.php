@@ -37,7 +37,7 @@
 							<label for="comentario">Comentario</label>
 							<input type="text" name="comentario" class="form-control" required placeholder="Comentario" id="comentario">
 						</div>
-						<div class="form-group col-sm-4">
+						<div class="col-sm-4">
 							<div class="dx-field">
 								<div class="dx-field-label">Usuario</div>
 								<div class="dx-field-value">
@@ -46,12 +46,19 @@
 							</div>
 							<input type="hidden" name="usuario" id="usuario">
 						</div>
+						<div class="form-group col-sm-4">
+							<label for="tipo">Tipo de pago</label>
+							<select class="form-select" aria-label="Default select example" id="tipo" name="tipo">
+								<option value="1">Bonos</option>
+								<option value="2">Horas extras</option>
+							</select>
+						</div>
 						
 					</div>
 					<br>
 					<div class="row">
 						<div class="col-1"><button type="submit" class="btn btn-primary btn-block" id="guardar">Guardar</button></div>
-						<div class="col-1"><button type="button" class="btn btn-warning btn-block" id="usuario">Usuario</button></div>
+						<div class="col-1"><a class="btn btn-warning btn-block" id="salario" href="<?php echo base_url();?>welcome">Usuario</a></div>
 					</div>
 					<br>
 				</form>
