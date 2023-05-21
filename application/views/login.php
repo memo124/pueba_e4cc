@@ -12,11 +12,11 @@
 		<div class="container">
 			<div class="wrapper fadeInDown">
 				<div id="formContent">
-					<div style="padding-top: 50px;">
-						<form action="" method="post" id="form-login">
+					<div style="padding-top: 50px;">	
+						<form action="<?php echo base_url(); ?>welcome" method="post" id="form-login">
 							<input type="text" id="usuario" class="form-control"  placeholder="usuario">
 							<input type="text" id="contrasena" class="form-control"  placeholder="contraseña">
-							<button type="button" class="btn btn-primary" id="loginB">Ingresar</button>
+							<button type="submit" class="btn btn-primary">Ingresar</button>
 						</form>
 					</div>
 				</div>

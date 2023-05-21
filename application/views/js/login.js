@@ -17,7 +17,13 @@ $(document).on('click','#loginB', function (e) {
 					contrasena: contrasena
 				}
 			}).done(function (data) {
-				
+				if(data.response == 'success')
+                {
+                    Redirect('/welcome');
+                } 
+				else {
+                   Redirect('login');
+                }
 			}).fail(function( jqXHR ) {
 				// Se evalua si la API respondio para dar una respuesta, sino se muestra un mensaje de error por consola
 				if ( jqXHR.status == 200 ) {

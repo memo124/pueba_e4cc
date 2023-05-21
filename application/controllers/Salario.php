@@ -5,18 +5,18 @@ class Welcome extends CI_Controller {
 		parent::__construct();
 		$this->load->helper('form');
 		$this->load->helper('url');
-		$this->load->model('Usuario');
+		$this->load->model('Salario');
 	}
 	
 	public function index()
 	{
-		$this->load->view('welcome_message');
+		$this->load->view('salarioV');
 	}
 
 	public function obtener()
 	{
 		if ($this->input->is_ajax_request()) {
-			$datos['usuario'] = $this->Usuario->seleccionar_todo();
+			$datos = $this->Pago->seleccionar_todo();
 			echo json_encode($datos);
 		} else {
 			echo "'No direct script access allowed'";
@@ -29,7 +29,7 @@ class Welcome extends CI_Controller {
 			
 				$ajax_data = $this->input->post();
 
-				if ($this->Usuario->agregar($ajax_data)) {
+				if ($this->Pago->agregar($ajax_data)) {
 					$data = array('response' => "success", 'message' => "Data added successfully");
 				} else {
 					$data = array('response' => "error", 'message' => "failed");
@@ -45,13 +45,12 @@ class Welcome extends CI_Controller {
 		if ($this->input->is_ajax_request()) {
 			
 			$ajax_data = $this->input->post();
-			if ($this->Usuario->eliminar($ajax_data)) {
-				$data = array('response' => "success", 'message' => "Eliminado correctamente");
-			} else {
-				$data = array('response' => "error", 'message' => "failed");
-			}
-			echo json_encode($data);
-
+			var_dump($ajax_data);
+			// if ($this->Usuario->eliminar($idUsuario)) {
+			// 	$data = array('response' => "success", 'message' => "Data added successfully");
+			// } else {
+			// 	$data = array('response' => "error", 'message' => "failed");
+			// }
 		}
 		else {
 			echo "'No direct script access allowed'";
@@ -66,8 +65,8 @@ class Welcome extends CI_Controller {
 			unset($ajax_data['data']['type']);
 
 			
-			if ($this->Usuario->actualizar($ajax_data)) {
-				$data = array('response' => "success", 'message' => "Actualizado correctamente");
+			if ($this->Pago->actualizar($ajax_data)) {
+				$data = array('response' => "success", 'message' => "Data added successfully");
 			} else {
 				$data = array('response' => "error", 'message' => "failed");
 			}

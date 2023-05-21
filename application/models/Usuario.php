@@ -11,9 +11,8 @@
             return $this->db->get()->result();
         }//end seleccionar_todo
 
-        public function eliminar($id_usuario) {
-            $this->db->where('idusuario', $id_usuario);
-            $this->db->delete('usuario');
+        public function eliminar($usuario) {
+            return $this->db->delete('usuario',array('idusuario' => $usuario['key']));
         }//end eliminar
 
         public function actualizar($usuario) {

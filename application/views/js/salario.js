@@ -5,11 +5,11 @@ $( document ).ready(() => {
 function mostrar(){
     $.ajax({
     dataType: 'json',
-    url: "http://localhost/prueba_e4cc/welcome/obtener"
+    url: "http://localhost/prueba_e4cc/salario/obtener"
     }).done(function (response) {
 
         const dataGrid = $('#gridContainer').dxDataGrid({
-        dataSource: response['usuario'],
+        dataSource: response,
         keyExpr: 'idusuario',
         showBorders: true,
         customizeColumns(columns) {
@@ -100,7 +100,7 @@ function metodo(obj) {
 
 function eliminarUsuario(object) {
 	$.ajax({
-        url: "http://localhost/pueba_e4cc/welcome/eliminar",
+        url: "http://localhost/pueba_e4cc/salario/eliminar",
         type: "post",
         dataType: "json",
         data: object,
@@ -157,7 +157,7 @@ function eliminarUsuario(object) {
 
 function actualizarUsuario(form){
     $.ajax({
-        url: "http://localhost/prueba_e4cc/welcome/editar",
+        url: "http://localhost/prueba_e4cc/salario/editar",
         type: "post",
         dataType: "json",
         data: form,
@@ -223,7 +223,7 @@ $(document).on('click', '#guardar', function(e) {
     var estado = $("#estado").val();
 
     $.ajax({
-        url: "http://localhost/prueba_e4cc/welcome/agregar",
+        url: "http://localhost/prueba_e4cc/salario/agregar",
         type: "post",
         dataType: "json",
         data: {
