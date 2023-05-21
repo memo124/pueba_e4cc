@@ -1,5 +1,5 @@
 <?php
-class Welcome extends CI_Controller {
+class SalarioC extends CI_Controller {
 
 	public function __construct() {
 		parent::__construct();
@@ -10,17 +10,13 @@ class Welcome extends CI_Controller {
 	
 	public function index()
 	{
-		$this->load->view('salarioV');
+		$this->load->view('salario');
 	}
 
 	public function obtener()
 	{
-		if ($this->input->is_ajax_request()) {
-			$datos = $this->Pago->seleccionar_todo();
-			echo json_encode($datos);
-		} else {
-			echo "'No direct script access allowed'";
-		}
+		$datos = $this->SalarioM->seleccionar_todo();
+		echo json_encode($datos);
 	}
 
 	public function agregar()
@@ -29,7 +25,7 @@ class Welcome extends CI_Controller {
 			
 				$ajax_data = $this->input->post();
 
-				if ($this->Pago->agregar($ajax_data)) {
+				if ($this->SalarioM->agregar($ajax_data)) {
 					$data = array('response' => "success", 'message' => "Data added successfully");
 				} else {
 					$data = array('response' => "error", 'message' => "failed");
@@ -45,12 +41,12 @@ class Welcome extends CI_Controller {
 		if ($this->input->is_ajax_request()) {
 			
 			$ajax_data = $this->input->post();
-			var_dump($ajax_data);
-			// if ($this->Usuario->eliminar($idUsuario)) {
-			// 	$data = array('response' => "success", 'message' => "Data added successfully");
-			// } else {
-			// 	$data = array('response' => "error", 'message' => "failed");
-			// }
+			if ($this->SalarioM->eliminar($ajax_data)) {
+				$data = array('response' => "success", 'message' => "Data added successfully");
+			} else {
+				$data = array('response' => "error", 'message' => "failed");
+			}
+			echo json_encode($data);
 		}
 		else {
 			echo "'No direct script access allowed'";
@@ -65,7 +61,7 @@ class Welcome extends CI_Controller {
 			unset($ajax_data['data']['type']);
 
 			
-			if ($this->Pago->actualizar($ajax_data)) {
+			if ($this->SalarioM->actualizar($ajax_data)) {
 				$data = array('response' => "success", 'message' => "Data added successfully");
 			} else {
 				$data = array('response' => "error", 'message' => "failed");

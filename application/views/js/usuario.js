@@ -2,15 +2,16 @@ $( document ).ready(() => {
     mostrar();
 });
 
+
 function mostrar(){
     $.ajax({
     dataType: 'json',
-    url: "http://localhost/prueba_e4cc/welcome/obtener"
+    url: "http://localhost/pueba_e4cc/welcome/obtener"
     }).done(function (response) {
 
         const dataGrid = $('#gridContainer').dxDataGrid({
         dataSource: response['usuario'],
-        keyExpr: 'idusuario',
+        keyExpr: 'idpago',
         showBorders: true,
         customizeColumns(columns) {
             columns[0].width = 70;
@@ -157,7 +158,7 @@ function eliminarUsuario(object) {
 
 function actualizarUsuario(form){
     $.ajax({
-        url: "http://localhost/prueba_e4cc/welcome/editar",
+        url: "http://localhost/pueba_e4cc/welcome/editar",
         type: "post",
         dataType: "json",
         data: form,
@@ -223,7 +224,7 @@ $(document).on('click', '#guardar', function(e) {
     var estado = $("#estado").val();
 
     $.ajax({
-        url: "http://localhost/prueba_e4cc/welcome/agregar",
+        url: "http://localhost/pueba_e4cc/welcome/agregar",
         type: "post",
         dataType: "json",
         data: {

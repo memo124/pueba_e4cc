@@ -38,12 +38,13 @@
 							<input type="text" name="comentario" class="form-control" required placeholder="Comentario" id="comentario">
 						</div>
 						<div class="form-group col-sm-4">
-							<label for="rol">Rol</label>
-							<select class="form-select" aria-label="Default select example" id="rol" name="rol">
-								<option selected>Open this select menu</option>
-								<option value="1">Administrador</option>
-								<option value="2">Usuario</option>
-							</select>
+							<div class="dx-field">
+								<div class="dx-field-label">Usuario</div>
+								<div class="dx-field-value">
+								<div id="usuario"></div>
+								</div>
+							</div>
+							<input type="hidden" name="usuario" id="usuario">
 						</div>
 						
 					</div>

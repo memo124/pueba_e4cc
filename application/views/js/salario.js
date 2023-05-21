@@ -1,16 +1,49 @@
 $( document ).ready(() => {
     mostrar();
+	mostrarCombo();
 });
+
+function mostrarCombo() {
+	$.ajax({
+		dataType: 'json',
+		url: "http://localhost/pueba_e4cc/welcome/obtener"
+		}).done(function (response) {
+			combo =  $('#usuario').dxSelectBox({
+				dataSource: new DevExpress.data.ArrayStore({
+				  data: response['usuario'],
+				  key: 'idusuario',
+				}),
+				displayExpr: 'perfil_usuario',
+				valueExpr: 'idusuario',
+				value: response['usuario'][0].idusuario,
+				onValueChanged(data) {
+					$('#usuario').text(data['value']);
+
+					document.getElementById('usuario').value = data['value'];
+
+					DevExpress.ui.notify(`The value is changed to: "${data.value}"`);
+				  }
+			  });
+			
+		}).fail(function( jqXHR ) {
+			// Se evalua si la API respondio para dar una respuesta, sino se muestra un mensaje de error por consola
+			if ( jqXHR.status == 200 ) {
+				console.log( jqXHR.responseText );
+			} else {
+				console.log( jqXHR.status + ' ' + jqXHR.statusText );
+			}
+		});
+}
 
 function mostrar(){
     $.ajax({
     dataType: 'json',
-    url: "http://localhost/prueba_e4cc/salario/obtener"
+    url: "http://localhost/pueba_e4cc/salarioC/obtener"
     }).done(function (response) {
 
         const dataGrid = $('#gridContainer').dxDataGrid({
         dataSource: response,
-        keyExpr: 'idusuario',
+        keyExpr: 'idpago',
         showBorders: true,
         customizeColumns(columns) {
             columns[0].width = 70;
@@ -100,7 +133,7 @@ function metodo(obj) {
 
 function eliminarUsuario(object) {
 	$.ajax({
-        url: "http://localhost/pueba_e4cc/salario/eliminar",
+        url: "http://localhost/pueba_e4cc/salarioC/eliminar",
         type: "post",
         dataType: "json",
         data: object,
@@ -157,7 +190,7 @@ function eliminarUsuario(object) {
 
 function actualizarUsuario(form){
     $.ajax({
-        url: "http://localhost/prueba_e4cc/salario/editar",
+        url: "http://localhost/pueba_e4cc/salarioC/editar",
         type: "post",
         dataType: "json",
         data: form,
@@ -215,24 +248,23 @@ function actualizarUsuario(form){
 $(document).on('click', '#guardar', function(e) {
     e.preventDefault();
 
-    var perfil = $("#perfil").val();
-    var nombre = $("#nombre").val();
-    var apellido = $("#apellido").val();
-    var email = $("#email").val();
-    var rol = $("#rol").val();
-    var estado = $("#estado").val();
+    var idusuario = $("#usuario").val();
+	var pago = $("#pago").val();
+	var cantidad = $("#cantidad").val();
+	var fecha = $("#fecha").val();
+	var comentario = $("#comentario").val();
+
 
     $.ajax({
-        url: "http://localhost/prueba_e4cc/salario/agregar",
+        url: "http://localhost/pueba_e4cc/SalarioC/agregar",
         type: "post",
         dataType: "json",
         data: {
-            perfil_usuario: perfil,
-            nombre: nombre,
-            apellido: apellido,
-            email: email,
-            rol: rol,
-            estado: estado,
+            montopagar: pago,
+            idusuario: idusuario,
+            cantidad: cantidad,
+            fechapago: fecha,
+            comentario: comentario
         },
         success: function(data) {
 

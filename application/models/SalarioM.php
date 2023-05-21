@@ -1,5 +1,5 @@
 <?php 
-    class Pago extends CI_Model {
+    class SalarioM extends CI_Model {
 
         public function agregar($pago) {
            return  $this->db->insert('pago', $pago);
@@ -11,13 +11,12 @@
             return $this->db->get()->result();
         }//end seleccionar_todo
 
-        public function eliminar($id_usuario) {
-            $this->db->where('idusuario', $id_usuario);
-            $this->db->delete('pago');
+        public function eliminar($salario) {
+            return $this->db->delete('pago',array('idpago' => $salario['key']));
         }//end eliminar
 
-        public function actualizar($usuario) {
-            return $this->db->update('pago', $usuario['data'], array('idusuario' => $usuario['key']));
+        public function actualizar($salrio) {
+            return $this->db->update('pago', $salrio['data'], array('idpago' => $salrio['key']));
         }//end actualizar
     }//end Class Persona
 ?>

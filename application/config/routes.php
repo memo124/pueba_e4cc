@@ -55,4 +55,4 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['login'] = 'Login/log';
 $route['welcome'] = 'Welcome/index';
-$route['salario'] = 'Salario';
+$route['salario'] = 'SalarioC/index';
