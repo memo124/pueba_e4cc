@@ -231,6 +231,7 @@ $(document).on('click', '#guardar', function(e) {
             nombre: nombre,
             apellido: apellido,
             email: email,
+			contrasena: perfil,
             rol: rol,
             estado: estado,
         },

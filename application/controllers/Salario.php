@@ -5,7 +5,7 @@ class Welcome extends CI_Controller {
 		parent::__construct();
 		$this->load->helper('form');
 		$this->load->helper('url');
-		$this->load->model('Salario');
+		$this->load->model('SalarioM');
 	}
 	
 	public function index()
